@@ -16,6 +16,29 @@ public class VendaIngresso {
 		
 	}
 
+	public VendaIngresso(String nomeCliente, int idade, String evento, LocalDate dataEvento, double valorIngresso,
+			int quantidadeIngresso) {
+		validarCliente(idade);
+		this.nomeCliente = nomeCliente;
+		this.idade = idade;
+		this.evento = evento;
+		this.dataEvento = dataEvento;
+		this.valorIngresso = valorIngresso;
+		this.quantidadeIngresso = quantidadeIngresso;
+	}
+	
+	private void validarCliente(int idade){
+		if(idade < 18) {
+			throw new IllegalArgumentException("O cliente precisa ter no Minimo 18 anos");
+		}
+	}
+	
+	private void validarDataEvento(LocalDate dataEvento) {
+		if(dataEvento.isBefore(LocalDate.now())) {
+			throw new IllegalArgumentException("A data deve ser futura");
+		}
+	}
+
 	public String getNomeCliente() {
 		return nomeCliente;
 	}
