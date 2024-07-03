@@ -38,6 +38,13 @@ public class VendaIngresso {
 			throw new IllegalArgumentException("A data deve ser futura");
 		}
 	}
+	
+	public double calcularValorTotal() {
+		if (this.getQuantidadeIngresso() > 5) {
+			throw new IllegalArgumentException("A quantidade deve ser menor igual a cinco");
+		}
+		return this.getValorIngresso() * this.getQuantidadeIngresso();
+	}
 
 	public String getNomeCliente() {
 		return nomeCliente;

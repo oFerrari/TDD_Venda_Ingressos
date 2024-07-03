@@ -27,4 +27,18 @@ public class IngressoTests {
 			VendaIngresso vi = new VendaIngresso("Andrei Ferrari",17,"Palestra sobre carro véi",LocalDate.of(2000, 2, 12),15.0,2);
 		});
 	}
+	
+	@Test
+	public void VendaDeIngressoDeveriaRealizarVendaQuandoValorInformadoIgualCompra() {
+		VendaIngresso vi = new VendaIngresso("Andrei Ferrari",18,"Palestra sobre carro véi",LocalDate.of(2024, 8, 12),15.0,2);
+		Assertions.assertEquals(30, vi.calcularValorTotal());
+	}
+	
+	@Test
+	public void VendaDeIngressoDeveriaRealizarVendaQuandoQuantidadeDeIngressoMenorIgualCinco() {
+		Assertions.assertThrows(IllegalArgumentException.class,() -> {
+			VendaIngresso vi = new VendaIngresso("Andrei Ferrari",18,"Palestra sobre carro véi",LocalDate.of(2024, 8, 12),15.0,7);
+			vi.calcularValorTotal();
+		});
+	}
 } 
